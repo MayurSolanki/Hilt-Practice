@@ -2,13 +2,15 @@ package com.example.hiltdaggerpractice.network
 
 import android.util.Log
 import com.example.hiltdaggerpractice.TAG
+import javax.inject.Inject
 
-class NetworkService private constructor(builder : Builder){
 
-    val protocol :String?
-    val host :String?
-    val path :String?
-    val interceptor : Interceptor?
+class NetworkService   constructor(builder : Builder){
+
+      val protocol :String?
+      val host :String?
+      val path :String?
+      val interceptor : Interceptor?
 
     init {
         this.protocol = builder.protocol
@@ -18,11 +20,11 @@ class NetworkService private constructor(builder : Builder){
     }
 
     fun performNetworkCall(){
-        interceptor?.log("call performed")
+//        interceptor?.log("call performed")
         Log.d(TAG, "Network call performed: $this")
     }
 
-    class Builder{
+     class Builder{
         var protocol : String? = null
             private set
         var host : String? = null
@@ -31,6 +33,24 @@ class NetworkService private constructor(builder : Builder){
             private set
         var interceptor : Interceptor? = null
             private set
+
+        fun protocol(protocol:String) = apply {
+            this.protocol= protocol
+        }
+
+         fun host(host:String) = apply {
+             this.host= host
+         }
+
+         fun path(path:String) = apply {
+             this.path= path
+         }
+
+         fun interceptor(protocol:Interceptor) = apply {
+             this.interceptor= protocol
+         }
+
+         fun build() = NetworkService(this)
 
 
     }

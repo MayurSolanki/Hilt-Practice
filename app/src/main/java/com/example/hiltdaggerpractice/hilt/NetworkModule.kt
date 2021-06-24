@@ -1,15 +1,21 @@
 package com.example.hiltdaggerpractice.hilt
 
-import com.example.hiltdaggerpractice.network.MyNetworkAdapter
-import com.example.hiltdaggerpractice.network.NetworkAdapter
-import dagger.Binds
+import com.example.hiltdaggerpractice.network.NetworkService
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
 
 @Module
 @InstallIn(ActivityComponent::class)
-abstract class NetworkModule {
-    @Binds
-    abstract fun bindNetworkAdapterImpl(myNetworkAdapter: MyNetworkAdapter): NetworkAdapter
+class NetworkModule {
+
+//    @Binds
+//    abstract fun bindNetworkAdapterImpl(myNetworkAdapter: MyNetworkAdapter): NetworkAdapter
+
+     @Provides
+     fun provideNetworkService() : NetworkService{
+         return NetworkService.Builder().host("google.com").protocol("HTTPS").build()
+     }
 }
+
