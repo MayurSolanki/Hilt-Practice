@@ -20,7 +20,7 @@ class NetworkService   constructor(builder : Builder){
     }
 
     fun performNetworkCall(){
-//        interceptor?.log("call performed")
+        interceptor?.log("call performed")
         Log.d(TAG, "Network call performed: $this")
     }
 

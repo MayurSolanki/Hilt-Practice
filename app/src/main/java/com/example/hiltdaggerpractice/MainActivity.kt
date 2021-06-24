@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import com.example.hiltdaggerpractice.database.DatabaseAdapter
 import com.example.hiltdaggerpractice.database.DatabaseService
+import com.example.hiltdaggerpractice.hilt.CallInterceptor
+import com.example.hiltdaggerpractice.hilt.ResponseInterceptor
 import com.example.hiltdaggerpractice.network.NetworkAdapter
 import com.example.hiltdaggerpractice.network.NetworkService
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,6 +18,8 @@ class MainActivity : AppCompatActivity() {
     @Inject lateinit var databaseAdapter: DatabaseAdapter
 //    @Inject lateinit var networkAdapter: NetworkAdapter
 
+     // @CallInterceptor
+     @ResponseInterceptor
      @Inject lateinit var networkService: NetworkService
 
     override fun onCreate(savedInstanceState: Bundle?) {
