@@ -7,6 +7,8 @@ import com.example.hiltdaggerpractice.database.DatabaseAdapter
 import com.example.hiltdaggerpractice.database.DatabaseService
 import com.example.hiltdaggerpractice.hilt.CallInterceptor
 import com.example.hiltdaggerpractice.hilt.ResponseInterceptor
+import com.example.hiltdaggerpractice.hilt.SomeInterface
+import com.example.hiltdaggerpractice.hilt.SomeInterfaceImpl
 import com.example.hiltdaggerpractice.network.NetworkAdapter
 import com.example.hiltdaggerpractice.network.NetworkService
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +24,10 @@ class MainActivity : AppCompatActivity() {
      @ResponseInterceptor
      @Inject lateinit var networkService: NetworkService
 
+     @Inject lateinit var  someInterface : SomeInterface
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -32,6 +38,9 @@ class MainActivity : AppCompatActivity() {
 //        networkAdapter.log("Interface Binding")
 
         networkService.performNetworkCall()
+
+        Log.d(TAG, "someInterface ${someInterface.doSomethinginsideSomeInterface("Yo yo")}")
+
     }
 
     @Inject

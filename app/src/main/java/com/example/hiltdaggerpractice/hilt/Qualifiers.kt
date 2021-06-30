@@ -3,7 +3,7 @@ package com.example.hiltdaggerpractice.hilt
 import javax.inject.Qualifier
 
 
-@Qualifier
+@Qualifier  // This is used to switch the instance
 @Retention(AnnotationRetention.BINARY)
 annotation class CallInterceptor
 
